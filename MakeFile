@@ -1,0 +1,2 @@
+create-assets:
+	/bin/bash create_assets

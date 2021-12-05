@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+assetsPath="lib/res/app_assets.dart"
+
+# remove file if exist
+rm -f "$assetsPath"
+
+touch "$assetsPath"
+{
+  echo "abstract class AppAssets {"
+} >>"$assetsPath"
+
+for entry in "assets/image"/*; do
+  file_path="$entry"
+  extension="${file_path##*.}"
+  file_name="${file_path##*/}"
+  base_name="${file_name%.*}"
+  echo "$file_name"
+  touch "$assetsPath"
+  {
+    echo "static String get $base_name => '$file_path';"
+  } >>"$assetsPath"
+done
+
+touch "$assetsPath"
+{
+  echo "}"
+} >>"$assetsPath"
+
+flutter format "$assetsPath"
