@@ -15,7 +15,8 @@ class _SettingPageState extends State<SettingPage> {
       child: RoundedButton(
         text: "LOG OUT",
         press: () {
-          Navigator.pushNamed(context, Routers.welcomeScreen);
+          Navigator.pushNamedAndRemoveUntil(
+              context, Routers.welcomeScreen, Routers.routeEmpty);
         },
       ),
     );

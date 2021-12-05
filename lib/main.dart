@@ -136,6 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void openMainPage() {
-    Navigator.pushNamed(context, Routers.welcomeScreen);
+    Navigator.pushNamedAndRemoveUntil(
+        context, Routers.welcomeScreen, Routers.routeEmpty);
   }
 }

@@ -39,14 +39,14 @@ class SignUpScreen extends StatelessWidget {
               RoundedButton(
                 text: "SIGNUP",
                 press: () {
-                  Navigator.pushNamed(context, Routers.loginScreen);
+                  Navigator.pushNamedAndRemoveUntil(context, Routers.loginScreen, Routers.routeEmpty);
                 },
               ),
               SizedBox(height: size.height * 0.03),
               AlreadyHaveAnAccountCheck(
                 login: false,
                 press: () {
-                  Navigator.pushNamed(context, Routers.loginScreen);
+                  Navigator.pushNamedAndRemoveUntil(context, Routers.loginScreen, Routers.routeEmpty);
                 },
               ),
               OrDivider(),

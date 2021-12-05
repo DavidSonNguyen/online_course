@@ -30,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
               RoundedButton(
                 text: "LOGIN",
                 press: () {
-                  Navigator.pushNamed(context, Routers.loginScreen);
+                  Navigator.pushReplacementNamed(context, Routers.loginScreen);
                 },
               ),
               RoundedButton(
@@ -38,7 +38,7 @@ class WelcomeScreen extends StatelessWidget {
                 color: AppColors.kPrimaryLightColor,
                 textColor: Colors.black,
                 press: () {
-                  Navigator.pushNamed(context, Routers.signUpScreen);
+                  Navigator.pushReplacementNamed(context, Routers.signUpScreen);
                 },
               ),
             ],

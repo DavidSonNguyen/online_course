@@ -16,6 +16,8 @@ class Routers {
         signUpScreen: (context) => SignUpScreen(),
       };
 
+  static RoutePredicate get routeEmpty => ModalRoute.withName('/');
+
   static String get mainScreen => '/mainScreen';
 
   static String get loginScreen => '/loginScreen';

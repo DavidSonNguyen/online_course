@@ -37,13 +37,13 @@ class LoginScreen extends StatelessWidget {
               RoundedButton(
                 text: "LOGIN",
                 press: () {
-                  Navigator.pushNamed(context, Routers.mainScreen);
+                  Navigator.pushNamedAndRemoveUntil(context, Routers.mainScreen, Routers.routeEmpty);
                 },
               ),
               SizedBox(height: size.height * 0.03),
               AlreadyHaveAnAccountCheck(
                 press: () {
-                  Navigator.pushNamed(context, Routers.signUpScreen);
+                  Navigator.pushNamedAndRemoveUntil(context, Routers.signUpScreen, Routers.routeEmpty);
                 },
               ),
             ],
