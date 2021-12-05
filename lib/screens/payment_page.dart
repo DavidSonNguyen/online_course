@@ -35,7 +35,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
           children: [
             productListing('Momo', 'Payment via Momo wallet', AppAssets.momo),
-            productListing('Momo', 'Payment via Visa or Master card',
+            productListing('Visa/Master', 'Payment via Visa or Master card',
                 AppAssets.visa_master),
           ],
         ),
