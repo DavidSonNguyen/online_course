@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "764807575736",
+    "firebase_url": "https://live812-ecb96.firebaseio.com",
+    "project_id": "live812-ecb96",
+    "storage_bucket": "live812-ecb96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764807575736:android:7afef67d2f78d9abc71c4d",
+        "android_client_info": {
+          "package_name": "com.example.onlinelearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764807575736-m163gautb8gcahfmn21pcbeg0nen0j9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9neYgFnhW9XkgY5UpDN2kqS_DhWJhLU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764807575736-m163gautb8gcahfmn21pcbeg0nen0j9v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "764807575736-2toue6qf6c034r0n8ppr2f7vd8a3fpvp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "works.live812.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
