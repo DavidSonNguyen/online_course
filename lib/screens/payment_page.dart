@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:onlinelearning/res/app_assets.dart';
 
-class PaymentPage extends StatefulWidget {
+class PaymentScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _PaymentPageState();
+  State<StatefulWidget> createState() => _PaymentScreenState();
 }
 
-class _PaymentPageState extends State<PaymentPage> {
+class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +34,9 @@ class _PaymentPageState extends State<PaymentPage> {
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
-            productListing(
-                'Momo', 'Payment via Momo wallet', 'assets/image/momo.png'),
-            productListing(
-                'Momo', 'Payment via Visa or Master card', 'assets/image/visa_master.png'),
+            productListing('Momo', 'Payment via Momo wallet', AppAssets.momo),
+            productListing('Momo', 'Payment via Visa or Master card',
+                AppAssets.visa_master),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/res/colors.dart';
+import 'package:onlinelearning/routers.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -54,11 +55,12 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         courseWidget(
-                            'Multimedia',
-                            'Animation Course',
-                            AppAssets.img1,
-                            Color(0xffff6a65),
-                            AppColors.secondColor),
+                          'Multimedia',
+                          'Animation Course',
+                          AppAssets.img1,
+                          Color(0xffff6a65),
+                          AppColors.kPrimaryLightColor,
+                        ),
                         SizedBox(
                           height: 20,
                         ),
@@ -133,7 +135,7 @@ class _HomePageState extends State<HomePage> {
             Text(
               '$title',
               style: TextStyle(
-                color: (bgColor == AppColors.secondColor)
+                color: (bgColor == AppColors.kPrimaryLightColor)
                     ? Colors.white
                     : Colors.black,
                 fontSize: 20,
@@ -148,14 +150,14 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   height: 5,
                   width: 100,
-                  color: (bgColor == AppColors.secondColor)
+                  color: (bgColor == AppColors.kPrimaryLightColor)
                       ? Colors.red
                       : Color(0xff2657ce),
                 ),
                 Expanded(
                   child: Container(
                     height: 5,
-                    color: (bgColor == AppColors.secondColor)
+                    color: (bgColor == AppColors.kPrimaryLightColor)
                         ? Colors.white.withOpacity(0.5)
                         : Color(0xff2657ce).withOpacity(0.5),
                   ),
@@ -182,7 +184,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void openCoursePage(String img, String title) {
-    Navigator.pushNamed(context, '/coursePage',
+    Navigator.pushNamed(context, Routers.courseScreen,
         arguments: {'img': '$img', 'title': '$title'});
   }
 }

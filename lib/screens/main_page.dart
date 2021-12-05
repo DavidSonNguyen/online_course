@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:onlinelearning/home/home_page.dart';
-import 'package:onlinelearning/home/live_stream_page.dart';
-import 'package:onlinelearning/home/setting_page.dart';
 import 'package:onlinelearning/res/colors.dart';
+import 'package:onlinelearning/screens/home/document_page.dart';
+import 'package:onlinelearning/screens/home/home_page.dart';
+import 'package:onlinelearning/screens/home/live_stream_page.dart';
+import 'package:onlinelearning/screens/home/setting_page.dart';
 
-import 'home/document_page.dart';
-
-class MainPage extends StatefulWidget {
+class MainScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _MainPageState();
+  State<StatefulWidget> createState() => _MainScreenState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainScreenState extends State<MainScreen> {
   final pages = [
     HomePage(),
     LiveStreamPage(),
@@ -37,8 +36,8 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.mainColor,
-        unselectedItemColor: AppColors.mainColor.withOpacity(0.5),
+        selectedItemColor: AppColors.kPrimaryColor,
+        unselectedItemColor: AppColors.kPrimaryColor.withOpacity(0.5),
         currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 0.0,
@@ -95,37 +94,3 @@ class _MainPageState extends State<MainPage> {
     super.dispose();
   }
 }
-
-// Row(
-// mainAxisAlignment: MainAxisAlignment.spaceAround,
-// children: <Widget>[
-// IconButton(
-// icon: Icon(
-// Icons.subscriptions,
-// color: Color(0xff2657ce),
-// size: 40,
-// ),
-// ),
-// IconButton(
-// icon: Icon(
-// Icons.camera_alt,
-// color: Color(0xff2657ce).withOpacity(0.5),
-// size: 40,
-// ),
-// ),
-// IconButton(
-// icon: Icon(
-// Icons.description,
-// color: Color(0xff2657ce).withOpacity(0.5),
-// size: 40,
-// ),
-// ),
-// IconButton(
-// icon: Icon(
-// Icons.settings,
-// color: Color(0xff2657ce).withOpacity(0.5),
-// size: 40,
-// ),
-// ),
-// ],
-// )

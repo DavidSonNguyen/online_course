@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:onlinelearning/res/colors.dart';
+import 'package:onlinelearning/routers.dart';
 
-class CoursePage extends StatefulWidget {
+class CourseScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _CoursePageState();
+  State<StatefulWidget> createState() => _CourseScreenState();
 }
 
-class _CoursePageState extends State<CoursePage> {
+class _CourseScreenState extends State<CourseScreen> {
   String chosenImg;
   String chosenTitle;
 
@@ -31,7 +32,7 @@ class _CoursePageState extends State<CoursePage> {
             },
             icon: Icon(
               Icons.arrow_back_ios,
-              color: AppColors.mainColor,
+              color: AppColors.kPrimaryColor,
             ),
           ),
         ),
@@ -47,7 +48,7 @@ class _CoursePageState extends State<CoursePage> {
                   child: Text(
                     '$chosenTitle',
                     style: TextStyle(
-                      color: AppColors.mainColor,
+                      color: AppColors.kPrimaryColor,
                       fontSize: 27,
                     ),
                   ),
@@ -55,13 +56,13 @@ class _CoursePageState extends State<CoursePage> {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/paymentPage');
+                      Navigator.pushNamed(context, Routers.paymentScreen);
                     },
                     child: Container(
                       padding:
                           EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                       decoration: BoxDecoration(
-                        color: AppColors.mainColor,
+                        color: AppColors.kPrimaryColor,
                         borderRadius: BorderRadius.all(Radius.circular(40)),
                       ),
                       child: Text(
@@ -85,7 +86,7 @@ class _CoursePageState extends State<CoursePage> {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
-                color: AppColors.secondColor,
+                color: AppColors.kPrimaryLightColor,
               ),
               child: Hero(
                 tag: chosenImg,
@@ -177,7 +178,7 @@ class _CoursePageState extends State<CoursePage> {
               height: 50,
               decoration: BoxDecoration(
                 color: (activeOrInactive == 'active')
-                    ? AppColors.mainColor
+                    ? AppColors.kPrimaryColor
                     : Color(0xffd3defa),
                 borderRadius: BorderRadius.all(Radius.circular(17)),
               ),
@@ -186,7 +187,7 @@ class _CoursePageState extends State<CoursePage> {
                   Icons.play_arrow,
                   color: (activeOrInactive == 'active')
                       ? Colors.white
-                      : AppColors.mainColor,
+                      : AppColors.kPrimaryColor,
                 ),
               ),
             ),

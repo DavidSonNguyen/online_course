@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:onlinelearning/course_page.dart';
-import 'package:onlinelearning/payment_page.dart';
 import 'package:onlinelearning/res/colors.dart';
 import 'package:onlinelearning/routers.dart';
-import 'login_page.dart';
-import 'main_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.secondColor,
+      backgroundColor: AppColors.kPrimaryLightColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,10 +42,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text(
                     "Online learning",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.w900,
-                        height: 1),
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w900,
+                      height: 1,
+                    ),
                   ),
                 ),
                 Container(
@@ -139,6 +136,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void openMainPage() {
-    Navigator.pushNamed(context, '/loginPage');
+    Navigator.pushNamed(context, Routers.welcomeScreen);
   }
 }

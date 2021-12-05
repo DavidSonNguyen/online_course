@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:onlinelearning/course_page.dart';
-import 'package:onlinelearning/login_page.dart';
-import 'package:onlinelearning/main_page.dart';
-import 'package:onlinelearning/payment_page.dart';
+import 'package:onlinelearning/screens/authen/login_screen.dart';
+import 'package:onlinelearning/screens/authen/signup_screen.dart';
+import 'package:onlinelearning/screens/course_page.dart';
+import 'package:onlinelearning/screens/main_page.dart';
+import 'package:onlinelearning/screens/payment_page.dart';
+import 'package:onlinelearning/screens/welcome_screen.dart';
 
 class Routers {
   static Map<String, WidgetBuilder> get all => {
-        '/mainPage': (context) => MainPage(),
-        '/loginPage': (context) => LoginPage(),
-        '/paymentPage': (context) => PaymentPage(),
-        '/coursePage': (context) => CoursePage(),
+        mainScreen: (context) => MainScreen(),
+        loginScreen: (context) => LoginScreen(),
+        paymentScreen: (context) => PaymentScreen(),
+        courseScreen: (context) => CourseScreen(),
+        welcomeScreen: (context) => WelcomeScreen(),
+        signUpScreen: (context) => SignUpScreen(),
       };
+
+  static String get mainScreen => '/mainScreen';
+
+  static String get loginScreen => '/loginScreen';
+
+  static String get paymentScreen => '/paymentScreen';
+
+  static String get courseScreen => '/courseScreen';
+
+  static String get welcomeScreen => '/welcomeScreen';
+
+  static String get signUpScreen => '/signUpScreen';
 }
