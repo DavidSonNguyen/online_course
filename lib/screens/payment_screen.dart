@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:onlinelearning/components/main_app_bar.dart';
 import 'package:onlinelearning/res/app_assets.dart';
+import 'package:onlinelearning/models/payment_method.dart';
 
 class PaymentScreen extends StatefulWidget {
   @override
@@ -7,43 +9,47 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
+  final paymentMethods = [
+    PaymentMethod.create('Momo', 'Payment via Momo wallet', AppAssets.momo),
+    PaymentMethod.create('Visa/Master', 'Payment via Visa or Master card',
+        AppAssets.visa_master),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Container(
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            color: Color(0xffe1eaff),
-          ),
-          child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Color(0xff2657ce),
-            ),
-          ),
-        ),
-      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
-            productListing('Momo', 'Payment via Momo wallet', AppAssets.momo),
-            productListing('Visa/Master', 'Payment via Visa or Master card',
-                AppAssets.visa_master),
+            MainAppBar(),
+            ListView.separated(
+              itemCount: 2,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                final payment = paymentMethods[index];
+                return buildPaymentMehod(
+                  payment.title,
+                  payment.info,
+                  payment.image,
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  width: double.maxFinite,
+                  height: 0.5,
+                  color: Colors.grey,
+                );
+              },
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget productListing(String title, String info, String image) {
+  Widget buildPaymentMehod(String title, String info, String image) {
     return Column(
       children: <Widget>[
         SizedBox(
@@ -79,14 +85,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ],
             )
           ],
-        ),
-        Center(
-          child: Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
-            width: MediaQuery.of(context).size.width * 0.85,
-            height: 0.5,
-            color: Colors.grey,
-          ),
         ),
         SizedBox(
           height: 10,

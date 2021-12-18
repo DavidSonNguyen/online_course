@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:onlinelearning/components/rounded_button.dart';
-import 'package:onlinelearning/res/colors.dart';
 import 'package:onlinelearning/routers.dart';
 
 class SettingPage extends StatefulWidget {
@@ -8,9 +7,10 @@ class SettingPage extends StatefulWidget {
   State<StatefulWidget> createState() => _SettingPageState();
 }
 
-class _SettingPageState extends State<SettingPage> {
+class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Center(
       child: RoundedButton(
         text: "LOG OUT",
@@ -21,4 +21,7 @@ class _SettingPageState extends State<SettingPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

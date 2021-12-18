@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:onlinelearning/components/main_app_bar.dart';
 import 'package:onlinelearning/res/colors.dart';
 import 'package:onlinelearning/routers.dart';
 
@@ -17,31 +19,12 @@ class _CourseScreenState extends State<CourseScreen> {
     chosenImg = arguments['img'];
     chosenTitle = arguments['title'];
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Container(
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            color: Color(0xffe1eaff),
-          ),
-          child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.kPrimaryColor,
-            ),
-          ),
-        ),
-      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            MainAppBar(),
             Row(
               children: [
                 Expanded(
@@ -88,17 +71,14 @@ class _CourseScreenState extends State<CourseScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(30)),
                 color: AppColors.kPrimaryLightColor,
               ),
-              child: Hero(
-                tag: chosenImg,
-                child: Container(
-                  height: 200,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                      image: DecorationImage(
-                        image: AssetImage(chosenImg),
-                      )),
-                ),
+              child: Container(
+                height: 200.0,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    image: DecorationImage(
+                      image: AssetImage(chosenImg),
+                    )),
               ),
             ),
             SizedBox(

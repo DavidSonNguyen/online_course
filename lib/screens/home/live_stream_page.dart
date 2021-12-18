@@ -6,11 +6,15 @@ class LiveStreamPage extends StatefulWidget {
 
 }
 
-class _LiveStreamPageState extends State<LiveStreamPage> {
+class _LiveStreamPageState extends State<LiveStreamPage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Center(
       child: Text('LiveStreamPage'),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

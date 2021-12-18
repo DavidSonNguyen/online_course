@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:onlinelearning/screens/authen/login_screen.dart';
 import 'package:onlinelearning/screens/authen/signup_screen.dart';
-import 'package:onlinelearning/screens/course_page.dart';
-import 'package:onlinelearning/screens/main_page.dart';
-import 'package:onlinelearning/screens/payment_page.dart';
+import 'package:onlinelearning/screens/course_screen.dart';
+import 'package:onlinelearning/screens/main_screen/main_screen.dart';
+import 'package:onlinelearning/screens/payment_screen.dart';
 import 'package:onlinelearning/screens/welcome_screen.dart';
 
 class Routers {
