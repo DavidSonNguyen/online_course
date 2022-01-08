@@ -2,13 +2,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:onlinelearning/components/rounded_button.dart';
+import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/res/colors.dart';
 import 'package:onlinelearning/routers.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  S localization;
+
   @override
   Widget build(BuildContext context) {
+    localization = S.of(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: _Background(
@@ -27,19 +31,20 @@ class WelcomeScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.05),
               RoundedButton(
-                text: "LOGIN",
+                text: localization.login.toUpperCase(),
                 press: () {
-                  Navigator.pushReplacementNamed(
-                      context, Routers.loginScreen);
+                  Navigator.pushReplacementNamed(context, Routers.loginScreen);
                 },
               ),
               RoundedButton(
-                text: "SIGN UP",
+                text: localization.signup.toUpperCase(),
                 color: AppColors.kPrimaryLightColor,
                 textColor: Colors.black,
                 press: () {
                   Navigator.pushReplacementNamed(
-                      context, Routers.signUpScreen);
+                    context,
+                    Routers.signUpScreen,
+                  );
                 },
               ),
             ],

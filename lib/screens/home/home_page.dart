@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage>
           shrinkWrap: true,
           physics: AlwaysScrollableScrollPhysics(),
           slivers: [
-            SliverEmpty(height: 20.0),
+            SliverSingle.empty(height: 20.0),
             SliverSingle(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage>
                 ],
               ),
             ),
-            SliverEmpty(height: 25.0),
+            SliverSingle.empty(height: 25.0),
             SliverSingle(
               child: Text(
                 'What do you \nwant to \nlearn today?',
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage>
                     fontSize: 35, height: 1.3, fontWeight: FontWeight.w700),
               ),
             ),
-            SliverEmpty(height: 10.0),
+            SliverSingle.empty(height: 10.0),
             SliverGrid(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
@@ -188,7 +188,7 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
             ),
-            SliverEmpty(height: 30.0),
+            SliverSingle.empty(height: 30.0),
           ],
         ),
       );

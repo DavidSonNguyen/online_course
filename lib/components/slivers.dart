@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 
-class SliverEmpty extends StatelessWidget {
+class SliverSingle extends StatelessWidget {
+  final Widget child;
   final double height;
   final double width;
 
-  const SliverEmpty({
+  const SliverSingle({
     Key key,
-    this.height = 0,
-    this.width = 0,
+    this.child,
+    this.height,
+    this.width,
   }) : super(key: key);
 
   @override
@@ -15,34 +17,21 @@ class SliverEmpty extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          return SizedBox(
-            height: this.height,
-            width: this.width,
-          );
+          return child ??
+              SizedBox(
+                width: width,
+                height: height,
+              );
         },
         childCount: 1,
       ),
     );
   }
-}
 
-class SliverSingle extends StatelessWidget {
-  final Widget child;
-
-  const SliverSingle({
-    Key key,
-    @required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          return child;
-        },
-        childCount: 1,
-      ),
+  factory SliverSingle.empty({double height, double width}) {
+    return SliverSingle(
+      width: width,
+      height: height,
     );
   }
 }

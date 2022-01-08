@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/res/colors.dart';
 import 'package:onlinelearning/routers.dart';
@@ -9,8 +10,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  S localization;
+
   @override
   Widget build(BuildContext context) {
+    localization = S.of(context);
     return Scaffold(
       backgroundColor: AppColors.kPrimaryLightColor,
       body: Column(
@@ -83,9 +87,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: MediaQuery.of(context).size.height * 0.6,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(AppAssets.splash),
-                        fit: BoxFit.cover)),
+                  image: DecorationImage(
+                    image: AssetImage(AppAssets.splash),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               Positioned(
                 bottom: 50,
@@ -104,9 +110,11 @@ class _SplashScreenState extends State<SplashScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(40)),
                       ),
                       child: Text(
-                        'Continue..',
+                        localization.continue_text,
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w700),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),

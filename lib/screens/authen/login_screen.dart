@@ -5,12 +5,16 @@ import 'package:onlinelearning/components/already_have_an_account_acheck.dart';
 import 'package:onlinelearning/components/rounded_button.dart';
 import 'package:onlinelearning/components/rounded_input_field.dart';
 import 'package:onlinelearning/components/rounded_password_field.dart';
+import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/routers.dart';
 
 class LoginScreen extends StatelessWidget {
+  S s;
+
   @override
   Widget build(BuildContext context) {
+    s = S.of(context);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: _Background(
@@ -19,7 +23,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "LOGIN",
+                s.login.toUpperCase(),
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: size.height * 0.03),
@@ -29,24 +33,29 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.03),
               RoundedInputField(
-                hintText: "Your Email",
+                hintText: s.your_email,
                 onChanged: (value) {},
               ),
               RoundedPasswordField(
                 onChanged: (value) {},
               ),
               RoundedButton(
-                text: "LOGIN",
+                text: s.login.toUpperCase(),
                 press: () {
                   Navigator.pushNamedAndRemoveUntil(
                       context, Routers.mainScreen, Routers.routeEmpty);
                 },
               ),
               SizedBox(height: size.height * 0.03),
-              AlreadyHaveAnAccountCheck(
+              OtherOptionAuthenWidget(
+                content: s.dont_have_account,
+                action: s.signup,
                 press: () {
                   Navigator.pushNamedAndRemoveUntil(
-                      context, Routers.signUpScreen, Routers.routeEmpty);
+                    context,
+                    Routers.signUpScreen,
+                    Routers.routeEmpty,
+                  );
                 },
               ),
             ],

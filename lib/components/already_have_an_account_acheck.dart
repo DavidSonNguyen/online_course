@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/colors.dart';
 
-class AlreadyHaveAnAccountCheck extends StatelessWidget {
-  final bool login;
+class OtherOptionAuthenWidget extends StatelessWidget {
+  final String content;
+  final String action;
   final Function press;
-  const AlreadyHaveAnAccountCheck({
+
+  OtherOptionAuthenWidget({
     Key key,
-    this.login = true,
     this.press,
+    this.content,
+    this.action,
   }) : super(key: key);
 
   @override
@@ -16,13 +20,14 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          login ? "Don’t have an Account ? " : "Already have an Account ? ",
+          content,
           style: TextStyle(color: AppColors.kPrimaryColor),
         ),
+        SizedBox(width: 5.0),
         GestureDetector(
           onTap: press,
           child: Text(
-            login ? "Sign Up" : "Sign In",
+            action,
             style: TextStyle(
               color: AppColors.kPrimaryColor,
               fontWeight: FontWeight.bold,

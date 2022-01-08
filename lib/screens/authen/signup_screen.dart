@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:onlinelearning/components/already_have_an_account_acheck.dart';
@@ -6,13 +7,17 @@ import 'package:onlinelearning/components/rounded_button.dart';
 import 'package:onlinelearning/components/rounded_input_field.dart';
 import 'package:onlinelearning/components/rounded_password_field.dart';
 import 'package:onlinelearning/components/social_icon.dart';
+import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/routers.dart';
 import 'package:onlinelearning/screens/authen/login_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
+  S s;
+
   @override
   Widget build(BuildContext context) {
+    s = S.of(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: _Background(
@@ -21,7 +26,7 @@ class SignUpScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "SIGNUP",
+                s.signup.toUpperCase(),
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: size.height * 0.03),
@@ -30,21 +35,22 @@ class SignUpScreen extends StatelessWidget {
                 height: size.height * 0.35,
               ),
               RoundedInputField(
-                hintText: "Your Email",
+                hintText: s.your_email,
                 onChanged: (value) {},
               ),
               RoundedPasswordField(
                 onChanged: (value) {},
               ),
               RoundedButton(
-                text: "SIGNUP",
+                text: s.signup.toUpperCase(),
                 press: () {
                   Navigator.pushNamedAndRemoveUntil(context, Routers.loginScreen, Routers.routeEmpty);
                 },
               ),
               SizedBox(height: size.height * 0.03),
-              AlreadyHaveAnAccountCheck(
-                login: false,
+              OtherOptionAuthenWidget(
+                content: s.already_have_account,
+                action: s.login,
                 press: () {
                   Navigator.pushNamedAndRemoveUntil(context, Routers.loginScreen, Routers.routeEmpty);
                 },
@@ -86,31 +92,35 @@ class _Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height,
-      width: double.infinity,
-      // Here i can use size.width but use double.infinity because both work as a same
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              AppAssets.signup_top,
-              width: size.width * 0.35,
+    return Center(
+      child: Container(
+        width: double.infinity,
+        height: size.height,
+        constraints: BoxConstraints(
+          maxWidth: kIsWeb ? 500.0 : double.maxFinite,
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            Positioned(
+              top: 0,
+              left: 0,
+              child: Image.asset(
+                AppAssets.signup_top,
+                width: size.width * 0.35,
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset(
-              AppAssets.main_bottom,
-              width: size.width * 0.25,
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: Image.asset(
+                AppAssets.main_bottom,
+                width: size.width * 0.25,
+              ),
             ),
-          ),
-          child,
-        ],
+            child,
+          ],
+        ),
       ),
     );
   }

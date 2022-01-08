@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/colors.dart';
 
 class OrDivider extends StatelessWidget {
@@ -14,7 +15,7 @@ class OrDivider extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              "OR",
+              S.of(context).or,
               style: TextStyle(
                 color: AppColors.kPrimaryColor,
                 fontWeight: FontWeight.w600,
