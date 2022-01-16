@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:onlinelearning/components/already_have_an_account_acheck.dart';
 import 'package:onlinelearning/components/or_divider.dart';
@@ -7,17 +10,22 @@ import 'package:onlinelearning/components/rounded_button.dart';
 import 'package:onlinelearning/components/rounded_input_field.dart';
 import 'package:onlinelearning/components/rounded_password_field.dart';
 import 'package:onlinelearning/components/social_icon.dart';
+import 'package:onlinelearning/features/authentication/middlewares.dart';
+import 'package:onlinelearning/features/states.dart';
 import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/routers.dart';
-import 'package:onlinelearning/screens/authen/login_screen.dart';
+import 'package:redux/redux.dart';
+import 'package:onlinelearning/features/authentication/actions.dart';
 
 class SignUpScreen extends StatelessWidget {
   S s;
+  Store<AppState> store;
 
   @override
   Widget build(BuildContext context) {
     s = S.of(context);
+    store ??= StoreProvider.of(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: _Background(
@@ -25,6 +33,18 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              StoreConnector<AppState, String>(
+                distinct: true,
+                converter: (sore) {
+                  return store.state.authenticationState.username;
+                },
+                builder: (context, username) {
+                  return Text(
+                    username,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  );
+                },
+              ),
               Text(
                 s.signup.toUpperCase(),
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -44,7 +64,8 @@ class SignUpScreen extends StatelessWidget {
               RoundedButton(
                 text: s.signup.toUpperCase(),
                 press: () {
-                  Navigator.pushNamedAndRemoveUntil(context, Routers.loginScreen, Routers.routeEmpty);
+                  store.dispatch(AuthenticationMiddleware.setName);
+                  // Navigator.pushNamedAndRemoveUntil(context, Routers.loginScreen, Routers.routeEmpty);
                 },
               ),
               SizedBox(height: size.height * 0.03),
@@ -52,7 +73,8 @@ class SignUpScreen extends StatelessWidget {
                 content: s.already_have_account,
                 action: s.login,
                 press: () {
-                  Navigator.pushNamedAndRemoveUntil(context, Routers.loginScreen, Routers.routeEmpty);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, Routers.loginScreen, Routers.routeEmpty);
                 },
               ),
               OrDivider(),

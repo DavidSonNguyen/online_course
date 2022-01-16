@@ -28,8 +28,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "home" : MessageLookupByLibrary.simpleMessage("Home"),
     "live_stream" : MessageLookupByLibrary.simpleMessage("Live stream"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
+    "logout" : MessageLookupByLibrary.simpleMessage("Log out"),
     "or" : MessageLookupByLibrary.simpleMessage("or"),
     "password" : MessageLookupByLibrary.simpleMessage("Password"),
+    "payment" : MessageLookupByLibrary.simpleMessage("Payment"),
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "signup" : MessageLookupByLibrary.simpleMessage("Sign up"),
     "your_email" : MessageLookupByLibrary.simpleMessage("Your email")

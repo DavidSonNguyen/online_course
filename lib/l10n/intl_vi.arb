@@ -10,5 +10,7 @@
   "home": "Home",
   "live_stream": "Live stream",
   "documents": "Documents",
-  "settings": "Settings"
+  "settings": "Settings",
+  "logout": "Log out",
+  "payment": "Payment"
 }
