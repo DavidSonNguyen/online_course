@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:onlinelearning/res/colors.dart';
 import 'package:onlinelearning/routers.dart';
@@ -9,15 +8,15 @@ class CourseWidget extends StatefulWidget {
   final String category;
   final String title;
   final String img;
-  final Color categoryColor;
-  final Color bgColor;
-  final Function() onTap;
+  final Color? categoryColor;
+  final Color? bgColor;
+  final Function()? onTap;
 
   const CourseWidget({
-    Key key,
-    this.category,
-    this.title,
-    this.img,
+    Key? key,
+    required this.category,
+    required this.title,
+    required this.img,
     this.categoryColor,
     this.bgColor,
     this.onTap,

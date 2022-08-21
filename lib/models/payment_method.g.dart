@@ -14,10 +14,12 @@ class _$PaymentMethod extends PaymentMethod {
   @override
   final String image;
 
-  factory _$PaymentMethod([void Function(PaymentMethodBuilder) updates]) =>
+  factory _$PaymentMethod([void Function(PaymentMethodBuilder)? updates]) =>
       (new PaymentMethodBuilder()..update(updates)).build();
 
-  _$PaymentMethod._({this.title, this.info, this.image}) : super._() {
+  _$PaymentMethod._(
+      {required this.title, required this.info, required this.image})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(title, 'PaymentMethod', 'title');
     BuiltValueNullFieldError.checkNotNull(info, 'PaymentMethod', 'info');
     BuiltValueNullFieldError.checkNotNull(image, 'PaymentMethod', 'image');
@@ -56,19 +58,19 @@ class _$PaymentMethod extends PaymentMethod {
 
 class PaymentMethodBuilder
     implements Builder<PaymentMethod, PaymentMethodBuilder> {
-  _$PaymentMethod _$v;
+  _$PaymentMethod? _$v;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _info;
-  String get info => _$this._info;
-  set info(String info) => _$this._info = info;
+  String? _info;
+  String? get info => _$this._info;
+  set info(String? info) => _$this._info = info;
 
-  String _image;
-  String get image => _$this._image;
-  set image(String image) => _$this._image = image;
+  String? _image;
+  String? get image => _$this._image;
+  set image(String? image) => _$this._image = image;
 
   PaymentMethodBuilder();
 
@@ -90,7 +92,7 @@ class PaymentMethodBuilder
   }
 
   @override
-  void update(void Function(PaymentMethodBuilder) updates) {
+  void update(void Function(PaymentMethodBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

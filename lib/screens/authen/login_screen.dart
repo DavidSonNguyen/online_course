@@ -1,20 +1,22 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:onlinelearning/components/already_have_an_account_acheck.dart';
 import 'package:onlinelearning/components/rounded_button.dart';
 import 'package:onlinelearning/components/rounded_input_field.dart';
 import 'package:onlinelearning/components/rounded_password_field.dart';
+import 'package:onlinelearning/features/authentication/actions.dart';
+import 'package:onlinelearning/features/states.dart';
 import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/routers.dart';
 
 class LoginScreen extends StatelessWidget {
-  S s;
-
   @override
   Widget build(BuildContext context) {
-    s = S.of(context);
+    final store = StoreProvider.of<AppState>(context);
+    final s = S.of(context);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: _Background(
@@ -42,8 +44,11 @@ class LoginScreen extends StatelessWidget {
               RoundedButton(
                 text: s.login.toUpperCase(),
                 press: () {
+                  store.dispatch(
+                    LoginWithUserNamePasswordAuthenticationAction(),
+                  );
                   Navigator.pushNamedAndRemoveUntil(
-                      context, Routers.mainScreen, Routers.routeEmpty);
+                      context, Routers.homeScreen, Routers.routeEmpty);
                 },
               ),
               SizedBox(height: size.height * 0.03),
@@ -70,8 +75,8 @@ class _Background extends StatelessWidget {
   final Widget child;
 
   const _Background({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
 
   @override

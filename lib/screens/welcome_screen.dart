@@ -1,56 +1,92 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:onlinelearning/base/status.dart';
 import 'package:onlinelearning/components/rounded_button.dart';
+import 'package:onlinelearning/features/authentication/actions.dart';
+import 'package:onlinelearning/features/states.dart';
 import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/res/colors.dart';
 import 'package:onlinelearning/routers.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  S localization;
-
   @override
   Widget build(BuildContext context) {
-    localization = S.of(context);
+    final s = S.of(context);
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: _Background(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "WELCOME TO EDU",
-                style: TextStyle(fontWeight: FontWeight.bold),
+    return StoreConnector<AppState, Status>(
+      distinct: true,
+      onInit: (store) {
+        print('welcome');
+        store.dispatch(CheckHasLoginAuthenticationAction());
+      },
+      converter: (store) {
+        return store.state.authenticationState
+                .statuses['AuthenticationAction.checkLoginStatusKey'] ??
+            Status();
+      },
+      onWillChange: (oldStatus, newStatus) {
+        if (newStatus.state == StatusState.success) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            Routers.homeScreen,
+            Routers.routeEmpty,
+          );
+        }
+      },
+      builder: (context, status) {
+        return WillPopScope(
+          onWillPop: () async {
+            return false;
+          },
+          child: Scaffold(
+            body: _Background(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "WELCOME TO EDU",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: size.height * 0.05),
+                    SvgPicture.asset(
+                      AppAssets.chat,
+                      height: size.height * 0.45,
+                    ),
+                    SizedBox(height: size.height * 0.05),
+                    RoundedButton(
+                      text: s.login.toUpperCase(),
+                      press: () {
+                        Navigator.pushReplacementNamed(
+                            context, Routers.loginScreen);
+                      },
+                    ),
+                    RoundedButton(
+                      text: s.signup.toUpperCase(),
+                      color: AppColors.kPrimaryLightColor,
+                      textColor: Colors.black,
+                      press: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          Routers.signUpScreen,
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: size.height * 0.05),
-              SvgPicture.asset(
-                AppAssets.chat,
-                height: size.height * 0.45,
-              ),
-              SizedBox(height: size.height * 0.05),
-              RoundedButton(
-                text: localization.login.toUpperCase(),
-                press: () {
-                  Navigator.pushReplacementNamed(context, Routers.loginScreen);
-                },
-              ),
-              RoundedButton(
-                text: localization.signup.toUpperCase(),
-                color: AppColors.kPrimaryLightColor,
-                textColor: Colors.black,
-                press: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    Routers.signUpScreen,
-                  );
-                },
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
+      onDidChange: (oldStatus, newStatus) {
+        // store.dispatch(RemoveStatusAuthenticationAction.create(
+        //   AuthenticationAction.checkLoginStatusKey,
+        // ));
+      },
     );
   }
 }
@@ -59,8 +95,8 @@ class _Background extends StatelessWidget {
   final Widget child;
 
   const _Background({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
 
   @override

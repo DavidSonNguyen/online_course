@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:onlinelearning/res/colors.dart';
 
 class MainNavigationBar extends StatefulWidget {
-  final Function(int index) onItemTap;
+  final Function(int index)? onItemTap;
 
-  const MainNavigationBar({Key key, this.onItemTap}) : super(key: key);
+  const MainNavigationBar({Key? key, this.onItemTap}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {

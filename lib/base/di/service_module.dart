@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:onlinelearning/base/services.dart';
+import 'package:onlinelearning/base/client_services.dart';
 import 'package:onlinelearning/features/authentication/repo/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @module
 abstract class ServiceModule {
@@ -9,8 +10,15 @@ abstract class ServiceModule {
     return AppClient();
   }
 
+  @preResolve
   @singleton
-  AuthenticationService authenticationService(@injectable AppClient appClient) {
-    return AuthenticationService(appClient);
+  Future<SharedPreferences> sharedPreferences() {
+    return SharedPreferences.getInstance();
+  }
+
+  @singleton
+  AuthenticationService authenticationService(@injectable AppClient appClient,
+      @injectable SharedPreferences sharedPreferences) {
+    return AuthenticationService(appClient, sharedPreferences);
   }
 }

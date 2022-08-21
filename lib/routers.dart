@@ -8,7 +8,7 @@ import 'package:onlinelearning/screens/welcome_screen.dart';
 
 class Routers {
   static Map<String, WidgetBuilder> get all => {
-        mainScreen: (context) => MainScreen(),
+        homeScreen: (context) => MainScreen(),
         loginScreen: (context) => LoginScreen(),
         paymentScreen: (context) => PaymentScreen(),
         courseScreen: (context) => CourseScreen(),
@@ -18,7 +18,7 @@ class Routers {
 
   static RoutePredicate get routeEmpty => ModalRoute.withName('/');
 
-  static String get mainScreen => '/mainScreen';
+  static String get homeScreen => '/homeScreen';
 
   static String get loginScreen => '/loginScreen';
 

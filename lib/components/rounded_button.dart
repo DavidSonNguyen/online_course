@@ -3,12 +3,12 @@ import 'package:onlinelearning/res/colors.dart';
 
 class RoundedButton extends StatelessWidget {
   final String text;
-  final Function press;
-  final Color color, textColor;
+  final Function()? press;
+  final Color? color, textColor;
 
   const RoundedButton({
-    Key key,
-    this.text,
+    Key? key,
+    required this.text,
     this.press,
     this.color,
     this.textColor = Colors.white,
@@ -36,12 +36,15 @@ class RoundedButton extends StatelessWidget {
         text,
         style: TextStyle(color: textColor),
       ),
-      onPressed: press,
+      onPressed: press ?? () {},
       style: ElevatedButton.styleFrom(
           primary: color ?? AppColors.kPrimaryColor,
           padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
           textStyle: TextStyle(
-              color: textColor, fontSize: 14, fontWeight: FontWeight.w500)),
+            color: textColor,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          )),
     );
   }
 }

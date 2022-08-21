@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -10,22 +8,19 @@ import 'package:onlinelearning/components/rounded_button.dart';
 import 'package:onlinelearning/components/rounded_input_field.dart';
 import 'package:onlinelearning/components/rounded_password_field.dart';
 import 'package:onlinelearning/components/social_icon.dart';
-import 'package:onlinelearning/features/authentication/middlewares.dart';
+import 'package:onlinelearning/features/authentication/actions.dart';
 import 'package:onlinelearning/features/states.dart';
 import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/routers.dart';
 import 'package:redux/redux.dart';
-import 'package:onlinelearning/features/authentication/actions.dart';
 
 class SignUpScreen extends StatelessWidget {
-  S s;
-  Store<AppState> store;
 
   @override
   Widget build(BuildContext context) {
-    s = S.of(context);
-    store ??= StoreProvider.of(context);
+    final s = S.of(context);
+    final store = StoreProvider.of(context);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: _Background(
@@ -64,7 +59,7 @@ class SignUpScreen extends StatelessWidget {
               RoundedButton(
                 text: s.signup.toUpperCase(),
                 press: () {
-                  store.dispatch(AuthenticationMiddleware.setName);
+                  store.dispatch(SetNameAuthenticationAction());
                   // Navigator.pushNamedAndRemoveUntil(context, Routers.loginScreen, Routers.routeEmpty);
                 },
               ),
@@ -81,15 +76,15 @@ class SignUpScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SocalIcon(
+                  SocialIcon(
                     iconSrc: AppAssets.facebook,
                     press: () {},
                   ),
-                  SocalIcon(
+                  SocialIcon(
                     iconSrc: AppAssets.twitter,
                     press: () {},
                   ),
-                  SocalIcon(
+                  SocialIcon(
                     iconSrc: AppAssets.google_plus,
                     press: () {},
                   ),
@@ -107,8 +102,8 @@ class _Background extends StatelessWidget {
   final Widget child;
 
   const _Background({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
 
   @override

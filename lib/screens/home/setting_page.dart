@@ -10,12 +10,10 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> with AutomaticKeepAliveClientMixin{
-  S s;
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    s = S.of(context);
+    final s = S.of(context);
     return Center(
       child: Container(
         constraints: BoxConstraints(

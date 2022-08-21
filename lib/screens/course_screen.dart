@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:onlinelearning/components/main_app_bar.dart';
 import 'package:onlinelearning/res/colors.dart';
@@ -10,14 +9,8 @@ class CourseScreen extends StatefulWidget {
 }
 
 class _CourseScreenState extends State<CourseScreen> {
-  String chosenImg;
-  String chosenTitle;
-
   @override
   Widget build(BuildContext context) {
-    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-    chosenImg = arguments['img'];
-    chosenTitle = arguments['title'];
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(20),
@@ -29,7 +22,7 @@ class _CourseScreenState extends State<CourseScreen> {
               children: [
                 Expanded(
                   child: Text(
-                    '$chosenTitle',
+                    '',
                     style: TextStyle(
                       color: AppColors.kPrimaryColor,
                       fontSize: 27,
@@ -77,7 +70,7 @@ class _CourseScreenState extends State<CourseScreen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                     image: DecorationImage(
-                      image: AssetImage(chosenImg),
+                      image: AssetImage(''),
                     )),
               ),
             ),
@@ -109,6 +102,7 @@ class _CourseScreenState extends State<CourseScreen> {
                             Icons.timer,
                             color: Colors.blue,
                           ),
+                          onPressed: () {},
                         ),
                       ),
                       Text(
@@ -169,6 +163,7 @@ class _CourseScreenState extends State<CourseScreen> {
                       ? Colors.white
                       : AppColors.kPrimaryColor,
                 ),
+                onPressed: () {},
               ),
             ),
             SizedBox(

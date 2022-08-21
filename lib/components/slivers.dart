@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
 class SliverSingle extends StatelessWidget {
-  final Widget child;
-  final double height;
-  final double width;
+  final Widget? child;
+  final double? height;
+  final double? width;
 
   const SliverSingle({
-    Key key,
+    Key? key,
     this.child,
     this.height,
     this.width,
@@ -28,7 +28,7 @@ class SliverSingle extends StatelessWidget {
     );
   }
 
-  factory SliverSingle.empty({double height, double width}) {
+  factory SliverSingle.empty({double? height, double? width}) {
     return SliverSingle(
       width: width,
       height: height,

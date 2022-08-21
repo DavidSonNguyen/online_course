@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:onlinelearning/res/colors.dart';
 
-class SocalIcon extends StatelessWidget {
+class SocialIcon extends StatelessWidget {
   final String iconSrc;
-  final Function press;
-  const SocalIcon({
-    Key key,
-    this.iconSrc,
+  final Function()? press;
+  const SocialIcon({
+    Key? key,
+    required this.iconSrc,
     this.press,
   }) : super(key: key);
 

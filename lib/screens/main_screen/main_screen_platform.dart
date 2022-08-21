@@ -18,32 +18,37 @@ abstract class MainScreenPlatformState extends State<MainScreenPlatform> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xfff4f6fd),
-      body: Row(
-        children: [
-          buildDrawer(),
-          Expanded(
-            child: Container(
-              child: PageView(
-                physics: pageScrollPhysics(),
-                children: pages,
-                controller: pageController,
-                onPageChanged: (index) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Color(0xfff4f6fd),
+        body: Row(
+          children: [
+            buildDrawer(),
+            Expanded(
+              child: Container(
+                child: PageView(
+                  physics: pageScrollPhysics(),
+                  children: pages,
+                  controller: pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
+        bottomNavigationBar: buildNavigation(),
       ),
-      bottomNavigationBar: buildNavigation(),
     );
   }
 
-  Widget buildNavigation() {
+  Widget? buildNavigation() {
     return null;
   }
 

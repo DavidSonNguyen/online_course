@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/colors.dart';
 
 class MainWebDrawer extends StatefulWidget {
-  final Function(int index) onItemTap;
+  final Function(int index)? onItemTap;
 
-  const MainWebDrawer({Key key, this.onItemTap}) : super(key: key);
+  const MainWebDrawer({Key? key, this.onItemTap}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -18,9 +17,9 @@ class _MainWebDrawerState extends State<MainWebDrawer>
     with TickerProviderStateMixin {
   bool showDrawer = false;
   int currentIndex = 0;
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
-  S s;
+  late S s;
 
   @override
   void initState() {

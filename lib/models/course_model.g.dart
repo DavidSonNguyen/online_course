@@ -14,10 +14,12 @@ class _$CourseModel extends CourseModel {
   @override
   final String img;
 
-  factory _$CourseModel([void Function(CourseModelBuilder) updates]) =>
+  factory _$CourseModel([void Function(CourseModelBuilder)? updates]) =>
       (new CourseModelBuilder()..update(updates)).build();
 
-  _$CourseModel._({this.category, this.title, this.img}) : super._() {
+  _$CourseModel._(
+      {required this.category, required this.title, required this.img})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(category, 'CourseModel', 'category');
     BuiltValueNullFieldError.checkNotNull(title, 'CourseModel', 'title');
     BuiltValueNullFieldError.checkNotNull(img, 'CourseModel', 'img');
@@ -56,19 +58,19 @@ class _$CourseModel extends CourseModel {
 }
 
 class CourseModelBuilder implements Builder<CourseModel, CourseModelBuilder> {
-  _$CourseModel _$v;
+  _$CourseModel? _$v;
 
-  String _category;
-  String get category => _$this._category;
-  set category(String category) => _$this._category = category;
+  String? _category;
+  String? get category => _$this._category;
+  set category(String? category) => _$this._category = category;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  String _img;
-  String get img => _$this._img;
-  set img(String img) => _$this._img = img;
+  String? _img;
+  String? get img => _$this._img;
+  set img(String? img) => _$this._img = img;
 
   CourseModelBuilder();
 
@@ -90,7 +92,7 @@ class CourseModelBuilder implements Builder<CourseModel, CourseModelBuilder> {
   }
 
   @override
-  void update(void Function(CourseModelBuilder) updates) {
+  void update(void Function(CourseModelBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

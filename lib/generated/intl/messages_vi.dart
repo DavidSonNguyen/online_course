@@ -7,7 +7,8 @@
 // ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
 // ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
 // ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names
+// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
 
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
@@ -20,20 +21,22 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'vi';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function> {
-    "already_have_account" : MessageLookupByLibrary.simpleMessage("Already have an Account?"),
-    "continue_text" : MessageLookupByLibrary.simpleMessage("Continue.."),
-    "documents" : MessageLookupByLibrary.simpleMessage("Documents"),
-    "dont_have_account" : MessageLookupByLibrary.simpleMessage("Don\'t have an Account?"),
-    "home" : MessageLookupByLibrary.simpleMessage("Home"),
-    "live_stream" : MessageLookupByLibrary.simpleMessage("Live stream"),
-    "login" : MessageLookupByLibrary.simpleMessage("Login"),
-    "logout" : MessageLookupByLibrary.simpleMessage("Log out"),
-    "or" : MessageLookupByLibrary.simpleMessage("or"),
-    "password" : MessageLookupByLibrary.simpleMessage("Password"),
-    "payment" : MessageLookupByLibrary.simpleMessage("Payment"),
-    "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
-    "signup" : MessageLookupByLibrary.simpleMessage("Sign up"),
-    "your_email" : MessageLookupByLibrary.simpleMessage("Your email")
-  };
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "already_have_account":
+            MessageLookupByLibrary.simpleMessage("Already have an Account?"),
+        "continue_text": MessageLookupByLibrary.simpleMessage("Continue.."),
+        "documents": MessageLookupByLibrary.simpleMessage("Documents"),
+        "dont_have_account":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an Account?"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "live_stream": MessageLookupByLibrary.simpleMessage("Live stream"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
+        "or": MessageLookupByLibrary.simpleMessage("or"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "payment": MessageLookupByLibrary.simpleMessage("Payment"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "signup": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "your_email": MessageLookupByLibrary.simpleMessage("Your email")
+      };
 }

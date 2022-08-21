@@ -10,7 +10,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  S localization;
+  late S localization;
 
   @override
   Widget build(BuildContext context) {

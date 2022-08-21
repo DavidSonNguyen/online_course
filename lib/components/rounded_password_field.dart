@@ -4,9 +4,9 @@ import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/colors.dart';
 
 class RoundedPasswordField extends StatelessWidget {
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
   const RoundedPasswordField({
-    Key key,
+    Key? key,
     this.onChanged,
   }) : super(key: key);
 

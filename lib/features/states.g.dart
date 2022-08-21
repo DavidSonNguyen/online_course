@@ -10,10 +10,10 @@ class _$AppState extends AppState {
   @override
   final AuthenticationState authenticationState;
 
-  factory _$AppState([void Function(AppStateBuilder) updates]) =>
+  factory _$AppState([void Function(AppStateBuilder)? updates]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.authenticationState}) : super._() {
+  _$AppState._({required this.authenticationState}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         authenticationState, 'AppState', 'authenticationState');
   }
@@ -45,13 +45,17 @@ class _$AppState extends AppState {
   }
 }
 
-class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
-  _$AppState _$v;
+class AppStateBuilder
+    implements
+        Builder<AppState, AppStateBuilder>,
+        AuthenticationStateInterfaceBuilder {
+  _$AppState? _$v;
 
-  AuthenticationStateBuilder _authenticationState;
+  AuthenticationStateBuilder? _authenticationState;
   AuthenticationStateBuilder get authenticationState =>
       _$this._authenticationState ??= new AuthenticationStateBuilder();
-  set authenticationState(AuthenticationStateBuilder authenticationState) =>
+  set authenticationState(
+          covariant AuthenticationStateBuilder? authenticationState) =>
       _$this._authenticationState = authenticationState;
 
   AppStateBuilder() {
@@ -68,13 +72,13 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   }
 
   @override
-  void replace(AppState other) {
+  void replace(covariant AppState other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AppState;
   }
 
   @override
-  void update(void Function(AppStateBuilder) updates) {
+  void update(void Function(AppStateBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -85,7 +89,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$result = _$v ??
           new _$AppState._(authenticationState: authenticationState.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'authenticationState';
         authenticationState.build();
