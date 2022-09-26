@@ -1,3 +1,4 @@
+import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -10,6 +11,7 @@ import 'package:onlinelearning/generated/l10n.dart';
 import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/res/colors.dart';
 import 'package:onlinelearning/routers.dart';
+import 'package:onlinelearning/screens/virtual_world_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -37,48 +39,55 @@ class WelcomeScreen extends StatelessWidget {
         }
       },
       builder: (context, status) {
+        final size = MediaQuery.of(context).size;
         return WillPopScope(
           onWillPop: () async {
             return false;
           },
           child: Scaffold(
-            body: _Background(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "WELCOME TO EDU",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: size.height * 0.05),
-                    SvgPicture.asset(
-                      AppAssets.chat,
-                      height: size.height * 0.45,
-                    ),
-                    SizedBox(height: size.height * 0.05),
-                    RoundedButton(
-                      text: s.login.toUpperCase(),
-                      press: () {
-                        Navigator.pushReplacementNamed(
-                            context, Routers.loginScreen);
-                      },
-                    ),
-                    RoundedButton(
-                      text: s.signup.toUpperCase(),
-                      color: AppColors.kPrimaryLightColor,
-                      textColor: Colors.black,
-                      press: () {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          Routers.signUpScreen,
-                        );
-                      },
-                    ),
-                  ],
-                ),
+            body: GameWidget(
+              game: VirtualWorld(
+                width: size.width,
+                height: size.height,
               ),
             ),
+            // _Background(
+            //   child: SingleChildScrollView(
+            //     child: Column(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: <Widget>[
+            //         Text(
+            //           "WELCOME TO EDU",
+            //           style: TextStyle(fontWeight: FontWeight.bold),
+            //         ),
+            //         SizedBox(height: size.height * 0.05),
+            //         SvgPicture.asset(
+            //           AppAssets.chat,
+            //           height: size.height * 0.45,
+            //         ),
+            //         SizedBox(height: size.height * 0.05),
+            //         RoundedButton(
+            //           text: s.login.toUpperCase(),
+            //           press: () {
+            //             Navigator.pushReplacementNamed(
+            //                 context, Routers.loginScreen);
+            //           },
+            //         ),
+            //         RoundedButton(
+            //           text: s.signup.toUpperCase(),
+            //           color: AppColors.kPrimaryLightColor,
+            //           textColor: Colors.black,
+            //           press: () {
+            //             Navigator.pushReplacementNamed(
+            //               context,
+            //               Routers.signUpScreen,
+            //             );
+            //           },
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ),
         );
       },

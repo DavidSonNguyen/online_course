@@ -10,7 +10,7 @@ touch "$assetsPath"
   echo "abstract class AppAssets {"
 } >>"$assetsPath"
 
-for entry in "assets/image"/*; do
+for entry in "assets/images"/*; do
   file_path="$entry"
   extension="${file_path##*.}"
   file_name="${file_path##*/}"

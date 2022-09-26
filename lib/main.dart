@@ -1,8 +1,10 @@
+import 'package:flame/sprite.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:onlinelearning/features/states.dart';
 import 'package:onlinelearning/generated/l10n.dart';
+import 'package:onlinelearning/res/app_assets.dart';
 import 'package:onlinelearning/routers.dart';
 import 'package:onlinelearning/screens/splash_screen.dart';
 import 'package:onlinelearning/screens/welcome_screen.dart';
@@ -26,6 +28,7 @@ void main() async {
     ],
   );
 
+  // final sprite = await Sprite.load('tile_0054.png');
   runApp(
     MyApp(store: store),
   );
